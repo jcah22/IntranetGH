@@ -105,4 +105,23 @@ public class HomeController {
         return "ponderacion";
     }
 
+    @GetMapping("/saveEmpresa")
+    public String saveEmpresa(){
+
+        return "nuevaEmpresa";
+    }
+
+    @GetMapping("/saveReq")
+    public String nuevaReq(){
+
+
+        return "nuevaReq";
+    }
+
+    @GetMapping("/nuevoUsuario")
+    public String nuevoUsuario(){
+
+        return "nuevoUsuario";
+    }
+
 }
