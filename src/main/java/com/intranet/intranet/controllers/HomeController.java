@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.intranet.intranet.services.IOdcService;
 import com.intranet.intranet.services.IRequisicionesService;
 
 @Controller
@@ -16,6 +17,9 @@ public class HomeController {
 
     @Autowired
     private IRequisicionesService reqservice;
+
+    @Autowired
+    private IOdcService odcservice;
 
     Date date = new Date();
     Calendar calendar = Calendar.getInstance();
@@ -31,6 +35,16 @@ public class HomeController {
         model.addAttribute("fecha", dateYear);
 
         return "home";
+    }
+
+
+    @GetMapping("/hosto")
+    private String hosto(Model model,@RequestParam Long filtro){
+
+        model.addAttribute("odcs", odcservice.findAllByQuery(filtro));
+
+        return "hosto";
+
     }
 
     @GetMapping("/sigloxxi")
