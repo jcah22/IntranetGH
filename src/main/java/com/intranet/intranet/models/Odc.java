@@ -1,14 +1,12 @@
 package com.intranet.intranet.models;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
@@ -23,40 +21,41 @@ public class Odc {
     private Date fecha;
     private boolean flete;
     private double total;
-    private String usoCfdi;
-
 
     @ManyToOne
     @JoinColumn(name = "requisicion_id")
     private Requisiciones requisicion;
 
-    @OneToOne(mappedBy = "odc")
+    @OneToOne
     private Directivo directivo;
 
-   @ManyToOne
-   @JoinColumn(name = "usuario")
-   private Usuario usuario;
+    @ManyToOne
+    @JoinColumn(name = "usuario")
+    private Usuario usuario;
 
     @ManyToOne
     @JoinColumn(name = "status_id")
     private Status status;
 
+    @OneToOne
+    private Cfdi cfdi;
+
     public Odc() {
     }
 
-    public Odc(Long id, String descripcion, String factura, Date fecha, boolean flete, double total, String usoCfdi,
-            Requisiciones requisicion, Directivo directivo, Usuario usuario, Status status) {
+    public Odc(Long id, String descripcion, String factura, Date fecha, boolean flete, double total,
+            Requisiciones requisicion, Directivo directivo, Usuario usuario, Status status, Cfdi cfdi) {
         this.id = id;
         this.descripcion = descripcion;
         this.factura = factura;
         this.fecha = fecha;
         this.flete = flete;
         this.total = total;
-        this.usoCfdi = usoCfdi;
         this.requisicion = requisicion;
         this.directivo = directivo;
         this.usuario = usuario;
         this.status = status;
+        this.cfdi = cfdi;
     }
 
     public Long getId() {
@@ -107,14 +106,6 @@ public class Odc {
         this.total = total;
     }
 
-    public String getUsoCfdi() {
-        return usoCfdi;
-    }
-
-    public void setUsoCfdi(String usoCfdi) {
-        this.usoCfdi = usoCfdi;
-    }
-
     public Requisiciones getRequisicion() {
         return requisicion;
     }
@@ -147,35 +138,12 @@ public class Odc {
         this.status = status;
     }
 
-    
+    public Cfdi getCfdi() {
+        return cfdi;
+    }
 
-    
-
-    
-
-   
-
-   
-
- 
-
-  
-
-    
-
-
-
-   
-
-   
-
-    
-
-    
-
-    
-
-   
-
+    public void setCfdi(Cfdi cfdi) {
+        this.cfdi = cfdi;
+    }
 
 }

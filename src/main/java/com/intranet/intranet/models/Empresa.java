@@ -17,10 +17,10 @@ public class Empresa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String correo;
-    private String  direccion;
+    private String direccion;
     private String nombre;
     private String rfc;
-    private  String telefono;
+    private String telefono;
     private String imagen;
 
     @ManyToMany(mappedBy = "empresas")
@@ -105,11 +105,4 @@ public class Empresa {
         this.reqs = reqs;
     }
 
-    
-
-    
-
-    
-
-    
 }

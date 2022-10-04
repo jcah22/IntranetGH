@@ -5,23 +5,27 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
-public class Directivo {
+@Table(name = "cfdi")
+public class Cfdi {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String codigo;
     private String nombre;
 
-    @OneToOne(mappedBy = "directivo")
+    @OneToOne(mappedBy = "cfdi")
     private Odc odc;
 
-    public Directivo() {
+    public Cfdi() {
     }
 
-    public Directivo(Long id, String nombre, Odc odc) {
+    public Cfdi(Long id, String codigo, String nombre, Odc odc) {
         this.id = id;
+        this.codigo = codigo;
         this.nombre = nombre;
         this.odc = odc;
     }
@@ -32,6 +36,14 @@ public class Directivo {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public String getNombre() {

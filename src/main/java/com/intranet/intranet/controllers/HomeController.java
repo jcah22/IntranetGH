@@ -14,24 +14,21 @@ import com.intranet.intranet.services.IRequisicionesService;
 @Controller
 public class HomeController {
 
-
     @Autowired
     private IRequisicionesService reqservice;
 
-
     Date date = new Date();
-	Calendar calendar = Calendar.getInstance();
+    Calendar calendar = Calendar.getInstance();
 
     @GetMapping("/")
     public String index(Model model, @RequestParam String filtro) {
 
         calendar.setTime(date);
-		int dateYear = calendar.get(Calendar.YEAR);
+        int dateYear = calendar.get(Calendar.YEAR);
 
         model.addAttribute("saludo", "Intranet de Hosto");
         model.addAttribute("reqs", reqservice.findAllByQuery(filtro));
         model.addAttribute("fecha", dateYear);
-
 
         return "home";
     }
@@ -106,20 +103,19 @@ public class HomeController {
     }
 
     @GetMapping("/saveEmpresa")
-    public String saveEmpresa(){
+    public String saveEmpresa() {
 
         return "nuevaEmpresa";
     }
 
     @GetMapping("/saveReq")
-    public String nuevaReq(){
-
+    public String nuevaReq() {
 
         return "nuevaReq";
     }
 
     @GetMapping("/nuevoUsuario")
-    public String nuevoUsuario(){
+    public String nuevoUsuario() {
 
         return "nuevoUsuario";
     }
