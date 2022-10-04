@@ -8,8 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Usuario {
@@ -18,6 +18,7 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String username;
+    private String password;
     private String nombres;
     private String apellidoPaterno;
     private String apellidoMaterno;
@@ -27,23 +28,23 @@ public class Usuario {
     private Date fechaNacimiento;
     private boolean status;
     private String foto;
-    
 
     @ManyToOne
-    @JoinColumn(name = "departamento")
+    @JoinColumn(name = "area_id")
     private Area area;
 
-    @ManyToMany
-    private List<Odc> odcu;
+    @OneToMany(mappedBy = "usuario")
+    private List<Odc> odc;
 
     public Usuario() {
     }
 
-    public Usuario(Long id, String username, String nombres, String apellidoPaterno, String apellidoMaterno,
-            String correo, String telefono, Date fechaIngreso, Date fechaNacimiento, boolean status, String foto,
-            Area area, List<Odc> odcu) {
+    public Usuario(Long id, String username, String password, String nombres, String apellidoPaterno,
+            String apellidoMaterno, String correo, String telefono, Date fechaIngreso, Date fechaNacimiento,
+            boolean status, String foto, Area area, List<Odc> odc) {
         this.id = id;
         this.username = username;
+        this.password = password;
         this.nombres = nombres;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
@@ -54,7 +55,7 @@ public class Usuario {
         this.status = status;
         this.foto = foto;
         this.area = area;
-        this.odcu = odcu;
+        this.odc = odc;
     }
 
     public Long getId() {
@@ -71,6 +72,14 @@ public class Usuario {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getNombres() {
@@ -153,34 +162,16 @@ public class Usuario {
         this.area = area;
     }
 
-    public List<Odc> getOdcu() {
-        return odcu;
+    public List<Odc> getOdc() {
+        return odc;
     }
 
-    public void setOdcu(List<Odc> odcu) {
-        this.odcu = odcu;
+    public void setOdc(List<Odc> odc) {
+        this.odc = odc;
     }
 
     
 
     
 
-    
-
-   
-
-    
-
-    
-
-    
-
- 
-
-
-
-
-
-
-    
 }

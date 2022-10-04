@@ -7,7 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -24,20 +26,26 @@ public class Odc {
     private String usoCfdi;
 
 
-    @ManyToMany(mappedBy = "odcr")
-    private List<Requisiciones> reqs;
+    @ManyToOne
+    @JoinColumn(name = "requisicion_id")
+    private Requisiciones requisicion;
 
     @OneToOne(mappedBy = "odc")
     private Directivo directivo;
 
-    @ManyToMany(mappedBy = "odcu")
-    private List<Usuario> usuarios;
+   @ManyToOne
+   @JoinColumn(name = "usuario")
+   private Usuario usuario;
+
+    @ManyToOne
+    @JoinColumn(name = "status_id")
+    private Status status;
 
     public Odc() {
     }
 
     public Odc(Long id, String descripcion, String factura, Date fecha, boolean flete, double total, String usoCfdi,
-            List<Requisiciones> reqs, Directivo directivo, List<Usuario> usuarios) {
+            Requisiciones requisicion, Directivo directivo, Usuario usuario, Status status) {
         this.id = id;
         this.descripcion = descripcion;
         this.factura = factura;
@@ -45,9 +53,10 @@ public class Odc {
         this.flete = flete;
         this.total = total;
         this.usoCfdi = usoCfdi;
-        this.reqs = reqs;
+        this.requisicion = requisicion;
         this.directivo = directivo;
-        this.usuarios = usuarios;
+        this.usuario = usuario;
+        this.status = status;
     }
 
     public Long getId() {
@@ -106,12 +115,12 @@ public class Odc {
         this.usoCfdi = usoCfdi;
     }
 
-    public List<Requisiciones> getReqs() {
-        return reqs;
+    public Requisiciones getRequisicion() {
+        return requisicion;
     }
 
-    public void setReqs(List<Requisiciones> reqs) {
-        this.reqs = reqs;
+    public void setRequisicion(Requisiciones requisicion) {
+        this.requisicion = requisicion;
     }
 
     public Directivo getDirectivo() {
@@ -122,12 +131,20 @@ public class Odc {
         this.directivo = directivo;
     }
 
-    public List<Usuario> getUsuarios() {
-        return usuarios;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setUsuarios(List<Usuario> usuarios) {
-        this.usuarios = usuarios;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     
@@ -136,5 +153,29 @@ public class Odc {
 
     
 
+   
+
+   
+
+ 
+
+  
+
     
+
+
+
+   
+
+   
+
+    
+
+    
+
+    
+
+   
+
+
 }

@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 
 @Entity
@@ -18,8 +19,8 @@ public class Requisiciones {
     private String codigo;
     private String nombre;
 
-    @ManyToMany
-    private List<Odc> odcr;
+    @OneToMany(mappedBy = "requisicion")
+    private List<Odc> odc;
 
     @ManyToMany
     private List<Empresa> empresas;
@@ -27,11 +28,11 @@ public class Requisiciones {
     public Requisiciones() {
     }
 
-    public Requisiciones(Long id, String codigo, String nombre, List<Odc> odcr, List<Empresa> empresas) {
+    public Requisiciones(Long id, String codigo, String nombre, List<Odc> odc, List<Empresa> empresas) {
         this.id = id;
         this.codigo = codigo;
         this.nombre = nombre;
-        this.odcr = odcr;
+        this.odc = odc;
         this.empresas = empresas;
     }
 
@@ -59,12 +60,12 @@ public class Requisiciones {
         this.nombre = nombre;
     }
 
-    public List<Odc> getOdcr() {
-        return odcr;
+    public List<Odc> getOdc() {
+        return odc;
     }
 
-    public void setOdcr(List<Odc> odcr) {
-        this.odcr = odcr;
+    public void setOdc(List<Odc> odc) {
+        this.odc = odc;
     }
 
     public List<Empresa> getEmpresas() {
@@ -74,6 +75,29 @@ public class Requisiciones {
     public void setEmpresas(List<Empresa> empresas) {
         this.empresas = empresas;
     }
+
+    
+
+    
+
+
+
+ 
+
+
+   
+    
+
+   
+
+    
+
+   
+
+   
+
+
+    
 
     
 
