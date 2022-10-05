@@ -10,6 +10,6 @@ public interface IOdcService {
 	public void guardar(Odc odc);
 	public Odc buscarPorId(Long  id);
 	public void eliminar(Long id);
-	public List<Odc> findAllByQuery(Long palabraClave);
+	public List<Odc> findAllByQuery(String palabraClave);
     
 }

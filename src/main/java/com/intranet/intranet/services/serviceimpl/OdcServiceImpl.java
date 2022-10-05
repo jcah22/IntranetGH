@@ -2,18 +2,13 @@ package com.intranet.intranet.services.serviceimpl;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.intranet.intranet.models.Odc;
-import com.intranet.intranet.repositories.OdcRepository;
 import com.intranet.intranet.services.IOdcService;
 
 @Service
 public class OdcServiceImpl implements IOdcService{
-
-    @Autowired
-    private OdcRepository repository;
 
     @Override
     public List<Odc> listarTodos() {
@@ -40,11 +35,11 @@ public class OdcServiceImpl implements IOdcService{
     }
 
     @Override
-    public List<Odc> findAllByQuery(Long palabraClave) {
+    public List<Odc> findAllByQuery(String palabraClave) {
         // TODO Auto-generated method stub
-        return repository.getOdcByRequisicionById(palabraClave);
+        return null;
     }
 
-  
+   
     
 }
