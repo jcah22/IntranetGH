@@ -41,12 +41,10 @@ public class OdcServiceImpl implements IOdcService{
 
     @Override
     public List<Odc> findAllByQuery(Long palabraClave) {
-        
-        return repository.searchFiltroRepository(palabraClave);
+        // TODO Auto-generated method stub
+        return repository.getOdcByRequisicionById(palabraClave);
     }
 
-    
-
-   
+  
     
 }

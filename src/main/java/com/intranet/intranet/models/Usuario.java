@@ -26,7 +26,6 @@ public class Usuario {
     private String telefono;
     private Date fechaIngreso;
     private Date fechaNacimiento;
-    private boolean status;
     private String foto;
 
     @ManyToOne
@@ -41,7 +40,7 @@ public class Usuario {
 
     public Usuario(Long id, String username, String password, String nombres, String apellidoPaterno,
             String apellidoMaterno, String correo, String telefono, Date fechaIngreso, Date fechaNacimiento,
-            boolean status, String foto, Area area, List<Odc> odc) {
+            String foto, Area area, List<Odc> odc) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -52,7 +51,6 @@ public class Usuario {
         this.telefono = telefono;
         this.fechaIngreso = fechaIngreso;
         this.fechaNacimiento = fechaNacimiento;
-        this.status = status;
         this.foto = foto;
         this.area = area;
         this.odc = odc;
@@ -138,14 +136,6 @@ public class Usuario {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
     public String getFoto() {
         return foto;
     }
@@ -169,5 +159,20 @@ public class Usuario {
     public void setOdc(List<Odc> odc) {
         this.odc = odc;
     }
+
+    
+
+    
+ 
+
+
+   
+
+  
+
+    
+
+
+    
 
 }

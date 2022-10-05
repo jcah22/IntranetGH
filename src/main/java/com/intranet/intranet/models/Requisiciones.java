@@ -8,8 +8,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "requisiciones")
 public class Requisiciones {
 
     @Id
@@ -18,20 +20,17 @@ public class Requisiciones {
     private String codigo;
     private String nombre;
 
-    @OneToMany(mappedBy = "requisicion")
-    private List<Odc> odc;
-
     @ManyToMany
     private List<Empresa> empresas;
 
     public Requisiciones() {
     }
 
-    public Requisiciones(Long id, String codigo, String nombre, List<Odc> odc, List<Empresa> empresas) {
+    public Requisiciones(Long id, String codigo, String nombre, List<Empresa> empresas) {
         this.id = id;
         this.codigo = codigo;
         this.nombre = nombre;
-        this.odc = odc;
+
         this.empresas = empresas;
     }
 
@@ -57,14 +56,6 @@ public class Requisiciones {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public List<Odc> getOdc() {
-        return odc;
-    }
-
-    public void setOdc(List<Odc> odc) {
-        this.odc = odc;
     }
 
     public List<Empresa> getEmpresas() {

@@ -9,14 +9,11 @@ import org.springframework.stereotype.Repository;
 import com.intranet.intranet.models.Odc;
 
 @Repository
-public interface OdcRepository extends JpaRepository<Odc,Long> {
+public interface OdcRepository extends JpaRepository<Odc, Long> {
 
-    @Query(
-
-        value = "SELECT * FROM odc where odc.requisicion_id=:filtro", nativeQuery = true
-        
-        )
-
-    List<Odc> searchFiltroRepository(Long  filtro);
+   // @Query("select o from Odc o where o.total= :filtro")
+   @Query(value="select * from odc o where o.id_req= :filtro", nativeQuery=true)
+   List<Odc> getOdcByRequisicionById(Long filtro);
     
+
 }

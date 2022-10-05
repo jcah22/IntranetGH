@@ -1,6 +1,7 @@
 package com.intranet.intranet.models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,8 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "odc")
 public class Odc {
 
     @Id
@@ -19,12 +22,12 @@ public class Odc {
     private String descripcion;
     private String factura;
     private Date fecha;
-    private boolean flete;
     private double total;
 
     @ManyToOne
-    @JoinColumn(name = "requisicion_id")
+    @JoinColumn(name = "id_req")
     private Requisiciones requisicion;
+    
 
     @OneToOne
     private Directivo directivo;
@@ -43,13 +46,12 @@ public class Odc {
     public Odc() {
     }
 
-    public Odc(Long id, String descripcion, String factura, Date fecha, boolean flete, double total,
-            Requisiciones requisicion, Directivo directivo, Usuario usuario, Status status, Cfdi cfdi) {
+    public Odc(Long id, String descripcion, String factura, Date fecha, double total, Requisiciones requisicion,
+            Directivo directivo, Usuario usuario, Status status, Cfdi cfdi) {
         this.id = id;
         this.descripcion = descripcion;
         this.factura = factura;
         this.fecha = fecha;
-        this.flete = flete;
         this.total = total;
         this.requisicion = requisicion;
         this.directivo = directivo;
@@ -88,14 +90,6 @@ public class Odc {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
-    }
-
-    public boolean isFlete() {
-        return flete;
-    }
-
-    public void setFlete(boolean flete) {
-        this.flete = flete;
     }
 
     public double getTotal() {
@@ -145,5 +139,23 @@ public class Odc {
     public void setCfdi(Cfdi cfdi) {
         this.cfdi = cfdi;
     }
+
+    
+
+    
+
+  
+
+
+    
+  
+
+   
+
+   
+
+ 
+
+    
 
 }
